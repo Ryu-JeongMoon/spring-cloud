@@ -1,0 +1,35 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+
+  profiles:
+    active: native
+
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file://${user.home}/Downloads/programming2/java/native-file-repo
+
+        git:
+          # 로컬용 uri: file:///Users/ryujeongmoon/Downloads/programming2/java/spring-cloud/git-local-repo
+          uri: https://github.com/Ryu-JeongMoon/spring-cloud-config.git
+          username: rjm9303@gmail.com
+          password: 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
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
+
+# http://localhost:8888/ecommerce/native or http://localhost:8888/user-service/native 검색 하면 어디서 설정 정보를 가져오는지 알 수 있음

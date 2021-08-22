@@ -1,0 +1,21 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: my-first-service
+
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+
+
+
