@@ -5,20 +5,17 @@ spring:
   application:
     name: user-service
 
-<<<<<<< HEAD
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
 
-=======
->>>>>>> 9db0d889c86cdac07492dc66a34603ad904a6406
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost/~/test
-    username: sa
-    password:
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:tcp://localhost/~/test
+#    username: sa
+#    password:
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
@@ -46,11 +43,7 @@ management:
   endpoints:
     web:
       exposure:
-<<<<<<< HEAD
         include: refresh, health, beans, busrefresh
-=======
-        include: refresh, health, beans
->>>>>>> 9db0d889c86cdac07492dc66a34603ad904a6406
 
 #token:
 #  expiration_time: 86400000

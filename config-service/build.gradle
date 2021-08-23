@@ -21,6 +21,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
     implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
+    // bootstrap dependency 를 넣어줘야 bootstrap.yml 읽을 수 있듬!
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

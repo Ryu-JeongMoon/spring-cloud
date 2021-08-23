@@ -1,22 +1,19 @@
 server:
   port: 8000
 
-token:
-  secret: user_token
+#token:
+#  secret: user_token
 
 spring:
   application:
     name: apigateway-service
 
-<<<<<<< HEAD
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
 
-=======
->>>>>>> 9db0d889c86cdac07492dc66a34603ad904a6406
   # yml 설정 대신 FilterConfig 를 통해서 자바코드로도 설정 가능!
   cloud:
     gateway:
@@ -110,8 +107,4 @@ management:
   endpoints:
     web:
       exposure:
-<<<<<<< HEAD
         include: refresh, health, beans, httptrace, busrefresh
-=======
-        include: refresh, health, beans, httptrace
->>>>>>> 9db0d889c86cdac07492dc66a34603ad904a6406
