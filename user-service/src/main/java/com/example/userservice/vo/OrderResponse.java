@@ -12,6 +12,6 @@ public class OrderResponse {
     private int unitPrice;
     private int totalPrice;
     private Date createdAt;
-    private Long orderId;
+    private String orderId;
 
 }

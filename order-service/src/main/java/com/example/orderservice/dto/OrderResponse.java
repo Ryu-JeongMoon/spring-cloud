@@ -9,6 +9,7 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderResponse {
 
+    private Long id;
     private String productId;
     private int quantity;
     private int unitPrice;

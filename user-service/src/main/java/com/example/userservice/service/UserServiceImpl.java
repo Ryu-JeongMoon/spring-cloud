@@ -6,10 +6,15 @@ import com.example.userservice.vo.OrderResponse;
 import com.example.userservice.vo.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +30,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
+    private final Environment environment;
+    private final RestTemplate restTemplate;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -51,8 +58,15 @@ public class UserServiceImpl implements UserService {
                                   .orElseThrow(() -> new UsernameNotFoundException("no!"));
 
         UserDto userDto = modelMapper.map(user, UserDto.class);
-        List<OrderResponse> orders = new ArrayList<>();
-        userDto.setOrders(orders);
+        //List<OrderResponse> orders = new ArrayList<>();
+
+        String orderUrl = String.format(environment.getProperty("order-service.url"), userId);
+        /** Using rest template */
+        ResponseEntity<List<OrderResponse>> result = restTemplate.exchange(orderUrl, HttpMethod.GET, null, new ParameterizedTypeReference<List<OrderResponse>>() {
+
+        });
+
+        userDto.setOrders(result.getBody());
         return userDto;
     }
 
