@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8dfa3ae-36a9-4d4b-9abb-7f457652474e" name="Changes" comment="init" />
+    <list default="true" id="f8dfa3ae-36a9-4d4b-9abb-7f457652474e" name="Changes" comment="add rest template">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +31,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -65,6 +71,8 @@
       <workItem from="1629628515264" duration="849000" />
       <workItem from="1629629384227" duration="36000" />
       <workItem from="1629629749525" duration="291000" />
+      <workItem from="1629730180374" duration="33000" />
+      <workItem from="1629801829971" duration="147000" />
     </task>
     <task id="LOCAL-00001" summary="add config-service">
       <created>1629612854301</created>
@@ -87,7 +95,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629629027708</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add rest template">
+      <created>1629730195421</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1629730195421</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +126,7 @@
     </ignored-roots>
     <MESSAGE value="add config-service" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="add rest template" />
+    <option name="LAST_COMMIT_MESSAGE" value="add rest template" />
   </component>
 </project>
