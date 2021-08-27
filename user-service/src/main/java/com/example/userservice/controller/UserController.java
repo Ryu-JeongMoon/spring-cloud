@@ -6,6 +6,7 @@ import com.example.userservice.vo.Greeting;
 import com.example.userservice.vo.SignupRequest;
 import com.example.userservice.vo.SignupResponse;
 import com.example.userservice.vo.UserDto;
+import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
@@ -27,6 +28,7 @@ public class UserController {
     private final ModelMapper modelMapper;
 
     @GetMapping("/health-check")
+    @Timed(value = "users.status", longTask = true)
     public String check() {
         return String.format("It's working in User-service on Port %s\n" +
                              "port(server.port) = %s\n" +
@@ -39,6 +41,7 @@ public class UserController {
      * 음.. Environment 가져오는게 더 편한거 같은데?!
      */
     @GetMapping("/welcome")
+    @Timed(value = "users.welcome", longTask = true)
     public String welcome() {
         //      return env.getProperty("greeting.message");
         return greeting.getMessage();

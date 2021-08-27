@@ -9,6 +9,8 @@ import com.example.userservice.vo.UserDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreaker;
+import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -35,6 +37,7 @@ public class UserServiceImpl implements UserService {
     private final RestTemplate restTemplate;
     private final OrderServiceClient orderServiceClient;
     private final FeignErrorDecoder feignErrorDecoder;
+    private final CircuitBreakerFactory circuitBreakerFactory;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -76,14 +79,21 @@ public class UserServiceImpl implements UserService {
         /** try - catch 문을 이용한 error handling
          List<OrderResponse> result = null;
          try {
-            result = orderServiceClient.getOrders(userId);
+         result = orderServiceClient.getOrders(userId);
          } catch (FeignException fe) {
-            log.error("error = {}", fe.getMessage());
+         log.error("error = {}", fe.getMessage());
          }
          */
 
         /** ErrorDecoder */
-        List<OrderResponse> result = orderServiceClient.getOrders(userId);
+        /** List<OrderResponse> result = orderServiceClient.getOrders(userId); */
+
+        /** CircuitBreaker */
+        log.info("BEFORE ORDER-SERVICE CALL");
+        CircuitBreaker circuitbreaker = circuitBreakerFactory.create("circuitbreaker");
+        List<OrderResponse> result = circuitbreaker.run(() -> orderServiceClient.getOrders(userId), throwable -> new ArrayList<>());
+        log.info("AFTER ORDER-SERVICE CALL");
+
         userDto.setOrders(result);
         return userDto;
     }
