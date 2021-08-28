@@ -21,10 +21,10 @@ spring:
           search-locations: file://${user.home}/Downloads/programming2/java/native-file-repo
 
         git:
-          # 로컬용 uri: file:///Users/ryujeongmoon/Downloads/programming2/java/spring-cloud/git-local-repo
           uri: https://github.com/Ryu-JeongMoon/spring-cloud-config.git
-          username: rjm9303@gmail.com
-          password: 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
+# 로컬용 uri: file:///Users/ryujeongmoon/Downloads/programming2/java/spring-cloud/git-local-repo
+#          username:
+#          password:
 
 management:
   endpoints:

@@ -1,6 +1,7 @@
 encrypt:
   #key: abcndfj34314kvf8cadf23kd02o20oi0d0a*2#(!!4@DFMZCVw._2342u21
   key-store:
-    location: file://${user.home}/Downloads/programming2/java/keystore/apiEncryptionKey.jks
+#    location: file://${user.home}/Downloads/programming2/java/keystore/apiEncryptionKey.jks
+    location: file:/apiEncryptionKey.jks
     password: 123456
     alias: apiEncryptionKey
