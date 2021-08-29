@@ -42,12 +42,14 @@ public class OrderController {
         List<OrderResponse> result = new ArrayList<>();
         orders.forEach(order -> result.add(modelMapper.map(order, OrderResponse.class)));
 
+        /*
         try {
             Thread.sleep(1000);
             throw new Exception("장애 발생");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        */
 
         log.info("AFTER RETRIEVE ORDERS DATA");
 
@@ -73,13 +75,12 @@ public class OrderController {
         orderDto.setTotalPrice(orderRequest.getQuantity() * orderRequest.getUnitPrice());
 
         */
-        /** send order to kafka *//*
+        /** send order to kafka */
 
         kafkaProducer.send("example-catalog-topic", orderDto);
-        orderProducer.send("orders", orderDto);
 
-        OrderResponse orderResponse = modelMapper.map(orderDto, OrderResponse.class);
-*/
+        /*orderProducer.send("orders", orderDto);
+        OrderResponse orderResponse = modelMapper.map(orderDto, OrderResponse.class);*/
 
         log.info("AFTER ADD ORDERS DATA");
         return ResponseEntity.status(HttpStatus.CREATED)
